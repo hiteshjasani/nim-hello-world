@@ -10,7 +10,15 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
+    - name: Cache Nim and Nimble
+      id: cache-nimble
+      uses: actions/cache@v1
+      with:
+        path: ~/.nimble
+        key: ${{ runner.os }}-nimble-1.0.2
+
     - name: Install Nim
+      if: steps.cache-nimble.outputs.cache-hit != 'true'
       run: |
         export CHOOSENIM_CHOOSE_VERSION="1.0.2"
         curl https://nim-lang.org/choosenim/init.sh -sSf > init.sh
