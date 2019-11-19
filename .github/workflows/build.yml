@@ -17,14 +17,14 @@ jobs:
       uses: actions/cache@v1
       with:
         path: ~/.choosenim
-        key: ${{ runner.os }}-choosenim-${{ echo $NIM_VERSION }}
+        key: ${{ runner.os }}-choosenim-$NIM_VERSION
 
     - name: Cache nimble
       id: cache-nimble
       uses: actions/cache@v1
       with:
         path: ~/.nimble
-        key: ${{ runner.os }}-nimble-${{ echo $NIM_VERSION }}
+        key: ${{ runner.os }}-nimble-$NIM_VERSION
 
     - name: Install Nim
       if: steps.cache-choosenim.outputs.cache-hit != 'true' || steps.cache-nimble.outputs.cache-hit != 'true'
