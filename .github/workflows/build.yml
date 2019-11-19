@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Setup environment
+      run: echo "::set-env name=NIM_VERSION::$NIM_VERSION"
+
     - uses: actions/checkout@v1
 
     - name: Cache choosenim
@@ -17,14 +20,14 @@ jobs:
       uses: actions/cache@v1
       with:
         path: ~/.choosenim
-        key: ${{ runner.os }}-choosenim-$NIM_VERSION
+        key: ${{ runner.os }}-choosenim-${{ env.NIM_VERSION }}
 
     - name: Cache nimble
       id: cache-nimble
       uses: actions/cache@v1
       with:
         path: ~/.nimble
-        key: ${{ runner.os }}-nimble-$NIM_VERSION
+        key: ${{ runner.os }}-nimble-${{ env.NIM_VERSION }}
 
     - name: Install Nim
       if: steps.cache-choosenim.outputs.cache-hit != 'true' || steps.cache-nimble.outputs.cache-hit != 'true'
