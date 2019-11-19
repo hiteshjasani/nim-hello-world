@@ -41,6 +41,12 @@ jobs:
         mkdir -p rel
         mv hello_world rel/
 
+    - name: Run Tests
+      run: |
+        export PATH=$HOME/.nimble/bin:$PATH
+        echo $PATH
+        nimble test
+
     - name: Upload artifact
       uses: actions/upload-artifact@master
       with:
