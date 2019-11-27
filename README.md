@@ -1,7 +1,8 @@
 # nim-hello-world
 
-![](https://github.com/hiteshjasani/nim-hello-world/workflows/Build%20Native/badge.svg)
-![](https://github.com/hiteshjasani/nim-hello-world/workflows/Build%20Docker%20Image/badge.svg)
+![](https://github.com/hiteshjasani/nim-hello-world/workflows/.github/workflows/build-native.yml/badge.svg)
+![](https://github.com/hiteshjasani/nim-hello-world/workflows/.github/workflows/build-image-gh-packages.yml/badge.svg)
+![](https://github.com/hiteshjasani/nim-hello-world/workflows/.github/workflows/build-image-dockerhub.yml/badge.svg)
 
 Experimenting with github actions on a Nim project.
 
@@ -15,7 +16,7 @@ so far:
 ## Native Build
 
 The code for the native build is found in
-[build.yml](.github/workflows/build.yml).  It sets up a nim
+[build-native.yml](.github/workflows/build-native.yml).  It sets up a nim
 environment by using `choosenim` to build the nim compiler.  Once
 built, both nim and nimble are cached for subsequent runs in this same
 repository.  The cache isn't shared with other repositories
@@ -23,18 +24,22 @@ unfortunately.
 
 It compiles the executable and publishes it as a build artifact.
 
-## Docker Image Build
+## Docker Image Builds
 
-The code for this one is stored in
-[build-docker.yml](.github/workflows/build-docker.yml).  In this case,
-we're using Docker image base that already has Nim and Nimble
-installed in it.  Shoutout to
-[nimlang/nim](https://hub.docker.com/r/nimlang/nim) for providing this
-excellent resource!
+The code is available in either
+
+* [build-image-gh-packages.yml](.github/workflows/build-image-gh-packages.yml)
+* [build-image-dockerhub.yml](.github/workflows/build-image-dockerhub.yml)
+
+depending on where the final Docker image is published.
+
+We're using Docker base image that already has Nim and Nimble
+installed in it so we get to skip the manual install step.
 
 The docker build uses the [ubuntu-1.0.2 docker
 file](dockerfiles/ubuntu-1.0.2) to build our executable and create a
 final image that does not have our source code in it.
+
 
 
 ## Resources
