@@ -26,7 +26,9 @@ jobs:
       run: docker images
 
     - name: Log in to Github Packages
-      run: docker login docker.pkg.github.com -u $AUTHOR -p ${{ secrets.GITHUB_TOKEN }}
+      run: echo $TOKEN | docker login docker.pkg.github.com -u $AUTHOR --password-stdin
+      env:
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Publish image to Github Packages
       run: docker push docker.pkg.github.com/$AUTHOR/$REPO/$IMAGE:$VERSION
