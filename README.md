@@ -1,8 +1,8 @@
 # nim-hello-world
 
-![](https://github.com/hiteshjasani/nim-hello-world/workflows/.github/workflows/build-native.yml/badge.svg)
-![](https://github.com/hiteshjasani/nim-hello-world/workflows/.github/workflows/build-image-gh-packages.yml/badge.svg)
-![](https://github.com/hiteshjasani/nim-hello-world/workflows/.github/workflows/build-image-dockerhub.yml/badge.svg)
+![](https://github.com/hiteshjasani/nim-hello-world/workflows/Build%20Native/badge.svg)
+![](https://github.com/hiteshjasani/nim-hello-world/workflows/Build%20GH%20Packages%20Image/badge.svg)
+![](https://github.com/hiteshjasani/nim-hello-world/workflows/Build%20DockerHub%20Image/badge.svg)
 
 Experimenting with github actions on a Nim project.
 

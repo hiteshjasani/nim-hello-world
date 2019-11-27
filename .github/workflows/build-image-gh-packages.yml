@@ -1,4 +1,4 @@
-name: Build Github Packages Docker Image
+name: Build GH Packages Image
 
 on: [push]
 
