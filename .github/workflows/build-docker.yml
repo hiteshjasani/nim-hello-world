@@ -17,7 +17,7 @@ jobs:
       run: docker build -t helloworld:$HELLOWORLD_VERSION -f dockerfiles/ubuntu-1.0.2 .
 
     - name: Test
-      run: docker run --rm helloworld:$HELLOWWORLD_VERSION
+      run: docker run --rm helloworld:$HELLOWORLD_VERSION
 
     - name: List docker images
       run: docker images
