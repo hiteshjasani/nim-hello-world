@@ -25,10 +25,14 @@ jobs:
     - name: List docker images
       run: docker images
 
-    - name: Log in to Github Packages
+    - name: Log in to DockerHub
       run: echo $TOKEN | docker login -u $AUTHOR --password-stdin
       env:
         TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Publish image to hub.docker.com
+    - name: Publish image to DockerHub
       run: docker push $AUTHOR/$REPO:$IMAGE-$VERSION
+
+    - name: Log out of DockerHub
+      if: always()
+      run: docker logout
