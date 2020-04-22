@@ -1,6 +1,6 @@
 name: Build GH Packages Image
 
-#on: [push]
+on: [push]
 
 jobs:
   build:
@@ -31,8 +31,9 @@ jobs:
       env:
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Publish image to Github Packages
-      run: docker push $IMAGE_SVR/$AUTHOR/$REPO/$IMAGE:$VERSION
+    # Uncomment this to publish to Github Packages
+    # - name: Publish image to Github Packages
+    #   run: docker push $IMAGE_SVR/$AUTHOR/$REPO/$IMAGE:$VERSION
 
     - name: Log out of Github Packages
       if: always()

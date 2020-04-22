@@ -2,6 +2,6 @@ import unittest
 
 import hello_world
 
-test "correct welcome":
+test "test welcome":
   check getWelcomeMessage() == "Hello, World!"
 

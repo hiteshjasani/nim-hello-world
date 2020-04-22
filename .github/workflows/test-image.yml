@@ -1,4 +1,4 @@
-name: Build DockerHub Image
+name: Test
 
 on: [push]
 
@@ -16,23 +16,5 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Build
-      run: docker build -t $AUTHOR/$REPO:$IMAGE-$VERSION -f dockerfiles/build-$NIM_VERSION-ubuntu .
-
     - name: Test
-      run: docker run --rm $AUTHOR/$REPO:$IMAGE-$VERSION
-
-    - name: List docker images
-      run: docker images
-
-    - name: Log in to DockerHub
-      run: echo $TOKEN | docker login -u $AUTHOR --password-stdin
-      env:
-        TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-
-    - name: Publish image to DockerHub
-      run: docker push $AUTHOR/$REPO:$IMAGE-$VERSION
-
-    - name: Log out of DockerHub
-      if: always()
-      run: docker logout
+      run: docker run -v `pwd`:/usr/src/app -w /usr/src/app nimlang/nim:$NIM_VERSION nimble test -y
