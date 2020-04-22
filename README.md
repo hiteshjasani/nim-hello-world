@@ -36,8 +36,8 @@ depending on where the final Docker image is published.
 We're using Docker base image that already has Nim and Nimble
 installed in it so we get to skip the manual install step.
 
-The docker build uses the [ubuntu-1.0.2 docker
-file](dockerfiles/ubuntu-1.0.2) to build our executable and create a
+The docker build uses the [build-1.0.2-ubuntu docker
+file](dockerfiles/build-1.0.2-ubuntu) to build our executable and create a
 final image that does not have our source code in it.
 
 

@@ -13,7 +13,7 @@ jobs:
     - name: Setup environment
       run: echo "::set-env name=NIM_VERSION::$NIM_VERSION"
 
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
 
     - name: Cache choosenim
       id: cache-choosenim
