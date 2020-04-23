@@ -10,9 +10,9 @@ Experimenting with github actions on a Nim project.
 Nim is not a supported language with `actions` yet so I started to
 experiment with different ways to build a Nim project.
 
-* [Test](.github/workflows/test-image.yml) - Just run tests
+* [Test](.github/workflows/test-image.yml) - Just run tests over multiple nim versions in one action.
 * [Native Build](.github/workflows/build-native.yml) - Download and compile nim, build app
-* [DockerHub Image Build](.github/workflows/build-image-dockerhub.yml) - Build and publish image to DockerHub
+* [DockerHub Image Build](.github/workflows/build-image-dockerhub.yml) - Build and publish images to DockerHub using multiple nim versions
 * [Github Packages Build](.github/workflows/build-image-gh-packages.yml) - Build and publish docker image to Github Packages
 
 ## Native Build
@@ -30,15 +30,15 @@ It compiles the executable and publishes it as a build artifact.
 
 The code is available in either
 
-* [build-image-gh-packages.yml](.github/workflows/build-image-gh-packages.yml)
 * [build-image-dockerhub.yml](.github/workflows/build-image-dockerhub.yml)
+* [build-image-gh-packages.yml](.github/workflows/build-image-gh-packages.yml)
 
 depending on where the final Docker image is published.
 
-We're using Docker base image that already has Nim and Nimble
+We're using Docker base images that already have Nim and Nimble
 installed in it so we get to skip the manual install step.
 
-The docker build uses files in [dockerfiles/](dockerfiles) to build the images.
+The Github Actions use files in [dockerfiles/](dockerfiles) for the builds.
 
 
 ## Resources
