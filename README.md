@@ -10,7 +10,7 @@ Experimenting with github actions on a Nim project.
 Nim is not a supported language with `actions` yet so I started to
 experiment with different ways to build a Nim project.
 
-* [Test](.github/workflows/test-image.yml) - Just run tests over multiple nim versions in one action.
+* [Test](.github/workflows/test-image.yml) - Just run tests over multiple nim versions and operating systems in one action.
 * [Native Build](.github/workflows/build-native.yml) - Download and compile nim, build app
 * [DockerHub Image Build](.github/workflows/build-image-dockerhub.yml) - Build and publish images to DockerHub using multiple nim versions
 * [Github Packages Build](.github/workflows/build-image-gh-packages.yml) - Build and publish docker image to Github Packages
