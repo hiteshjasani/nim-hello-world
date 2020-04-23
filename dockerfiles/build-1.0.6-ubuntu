@@ -1,0 +1,17 @@
+FROM nimlang/nim:1.0.6-ubuntu AS build
+
+RUN nimble refresh
+
+COPY . /src/project/
+
+WORKDIR /src/project
+
+RUN nimble build -y
+
+RUN mkdir -p /bin/project/
+RUN cp hello_world /bin/project/
+
+
+FROM nimlang/nim:1.0.6-ubuntu
+COPY --from=build /bin/project /bin/project
+ENTRYPOINT ["/bin/project/hello_world"]
