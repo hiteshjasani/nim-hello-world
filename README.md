@@ -1,5 +1,6 @@
 # nim-hello-world
 
+![](https://github.com/hiteshjasani/nim-hello-world/workflows/Test/badge.svg)
 ![](https://github.com/hiteshjasani/nim-hello-world/workflows/Build%20Native/badge.svg)
 ![](https://github.com/hiteshjasani/nim-hello-world/workflows/Build%20GH%20Packages%20Image/badge.svg)
 ![](https://github.com/hiteshjasani/nim-hello-world/workflows/Build%20DockerHub%20Image/badge.svg)
@@ -7,11 +8,12 @@
 Experimenting with github actions on a Nim project.
 
 Nim is not a supported language with `actions` yet so I started to
-experiment with different ways to build a Nim project.  There are two
-so far:
+experiment with different ways to build a Nim project.
 
-* Native Build
-* Docker Image Build
+* [Test](.github/workflows/test-image.yml) - Just run tests
+* [Native Build](.github/workflows/build-native.yml) - Download and compile nim, build app
+* [DockerHub Image Build](.github/workflows/build-image-dockerhub.yml) - Build and publish image to DockerHub
+* [Github Packages Build](.github/workflows/build-image-gh-packages.yml) - Build and publish docker image to Github Packages
 
 ## Native Build
 
@@ -36,10 +38,7 @@ depending on where the final Docker image is published.
 We're using Docker base image that already has Nim and Nimble
 installed in it so we get to skip the manual install step.
 
-The docker build uses the [build-1.0.2-ubuntu docker
-file](dockerfiles/build-1.0.2-ubuntu) to build our executable and create a
-final image that does not have our source code in it.
-
+The docker build uses files in [dockerfiles/](dockerfiles) to build the images.
 
 
 ## Resources
