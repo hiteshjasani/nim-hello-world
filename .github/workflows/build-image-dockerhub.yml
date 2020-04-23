@@ -9,18 +9,21 @@ jobs:
       REPO: nim-hello-world
       IMAGE: hello-world-ubuntu
       VERSION: 0.1
-      NIM_VERSION: 1.0.2
+
+    strategy:
+      matrix:
+        NIM_VERSION: [1.0.2, 1.0.6, 1.2.0]
 
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
 
     - name: Build
-      run: docker build -t $AUTHOR/$REPO:$IMAGE-$VERSION -f dockerfiles/ubuntu-1.0.2 .
+      run: docker build -t $AUTHOR/$REPO:$IMAGE-$VERSION-${{ matrix.NIM_VERSION }} -f dockerfiles/build-${{ matrix.NIM_VERSION }}-ubuntu .
 
     - name: Test
-      run: docker run --rm $AUTHOR/$REPO:$IMAGE-$VERSION
+      run: docker run --rm $AUTHOR/$REPO:$IMAGE-$VERSION-${{ matrix.NIM_VERSION }}
 
     - name: List docker images
       run: docker images
@@ -31,7 +34,7 @@ jobs:
         TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Publish image to DockerHub
-      run: docker push $AUTHOR/$REPO:$IMAGE-$VERSION
+      run: docker push $AUTHOR/$REPO:$IMAGE-$VERSION-${{ matrix.NIM_VERSION }}
 
     - name: Log out of DockerHub
       if: always()

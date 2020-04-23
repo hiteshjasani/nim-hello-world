@@ -1,5 +1,6 @@
 # nim-hello-world
 
+![](https://github.com/hiteshjasani/nim-hello-world/workflows/Test/badge.svg)
 ![](https://github.com/hiteshjasani/nim-hello-world/workflows/Build%20Native/badge.svg)
 ![](https://github.com/hiteshjasani/nim-hello-world/workflows/Build%20GH%20Packages%20Image/badge.svg)
 ![](https://github.com/hiteshjasani/nim-hello-world/workflows/Build%20DockerHub%20Image/badge.svg)
@@ -7,11 +8,12 @@
 Experimenting with github actions on a Nim project.
 
 Nim is not a supported language with `actions` yet so I started to
-experiment with different ways to build a Nim project.  There are two
-so far:
+experiment with different ways to build a Nim project.
 
-* Native Build
-* Docker Image Build
+* [Test](.github/workflows/test-image.yml) - Just run tests over multiple nim versions and operating systems in one action.
+* [Native Build](.github/workflows/build-native.yml) - Download and compile nim, build app
+* [DockerHub Image Build](.github/workflows/build-image-dockerhub.yml) - Build and publish images to DockerHub using multiple nim versions
+* [Github Packages Build](.github/workflows/build-image-gh-packages.yml) - Build and publish docker image to Github Packages
 
 ## Native Build
 
@@ -28,18 +30,15 @@ It compiles the executable and publishes it as a build artifact.
 
 The code is available in either
 
-* [build-image-gh-packages.yml](.github/workflows/build-image-gh-packages.yml)
 * [build-image-dockerhub.yml](.github/workflows/build-image-dockerhub.yml)
+* [build-image-gh-packages.yml](.github/workflows/build-image-gh-packages.yml)
 
 depending on where the final Docker image is published.
 
-We're using Docker base image that already has Nim and Nimble
+We're using Docker base images that already have Nim and Nimble
 installed in it so we get to skip the manual install step.
 
-The docker build uses the [ubuntu-1.0.2 docker
-file](dockerfiles/ubuntu-1.0.2) to build our executable and create a
-final image that does not have our source code in it.
-
+The Github Actions use files in [dockerfiles/](dockerfiles) for the builds.
 
 
 ## Resources
